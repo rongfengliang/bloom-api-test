@@ -1,0 +1,23 @@
+version: "3"
+services: 
+  lb: 
+    image: openresty/openresty:alpine
+    volumes:
+    - "./nginx-lb.conf:/usr/local/openresty/nginx/conf/nginx.conf"
+    - "./access_test.log:/usr/local/openresty/nginx/logs/access_test.log"
+    - "./access_test2.log:/usr/local/openresty/nginx/logs/access_test2.log"
+    ports:
+    - "80:80"
+    - "8080:8080"
+    - "8081:8081"
+  bloom: 
+    image: dalongrong/bloom:v1.28.1
+    volumes: 
+    - "./bloom.cfg:/etc/bloom.cfg"
+    ports: 
+    - "8811:8811"
+    - "9001:8080"
+  redis:
+    image: redis
+    ports:
+    - "6379:6379"
