@@ -17,6 +17,12 @@ touch access_test.log access_test2.log
 docker-compose up -d
 ```
 
+* request
+
+http://localhost/userdemo
+
+http://localhost/appdemo
+
 * user api control cache
 
 > for clean `/userdemo` request 
